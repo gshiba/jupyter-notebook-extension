@@ -1,0 +1,54 @@
+.rendered_html code {
+    padding: 2px 4px;
+    color: #d14;
+    white-space: nowrap;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    font-style: normal;
+}
+
+.rendered_html pre code {
+    border: 0;
+    color: #000;
+    background-color: #eee;
+    white-space: pre-wrap;
+    font-size: 100%;
+    padding: 0px;
+}
+
+.rendered_html pre {
+    border: 0;
+    background-color: #eee;
+    padding: 5px;
+}
+
+.rendered_html h1 {
+    border-bottom: 2px solid #004E95;
+    color: #004E95;
+}
+
+.rendered_html h2 {
+    color: #0685B8;
+}
+
+.rendered_html h3 {
+    font-style: italic;
+    color: #56C0CE;
+}
+
+/* trailing space */
+.edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor .cm-trailingspace {
+    /* Turn trailing space red when in (juptyer-edit-mode && vim-normal-mode) */
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor {
+    /* normal mode */
+    background-color: #F5F6EB;
+}
+
+.edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) {
+    /* insert mode */
+    background-color: #F2FCFF;
+}
+

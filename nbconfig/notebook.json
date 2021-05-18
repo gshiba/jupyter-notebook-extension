@@ -1,0 +1,15 @@
+{
+  "keys": {
+    "command": {
+      "bind": {
+        "e,e": "jupyter-notebook:clear-cell-output",
+        "t": "jupyter-notebook:toggle-header",
+        "shift-t": "jupyter-notebook:toggle-toolbar"
+      }
+    }
+  },
+  "Notebook": {
+    "Header": false,
+    "Toolbar": false
+  }
+}
