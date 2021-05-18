@@ -8,6 +8,7 @@ In Jupyter Command mode:
 * `t` and `T` to toggle header and toolbar
 
 In Jupyter Edit mode:
+* vim bindings
 * `:imap jk <Esc>`
 * `/` for search within cell
 * `:` command mode for search-and-replace eg `:s/foo/bar/g`
