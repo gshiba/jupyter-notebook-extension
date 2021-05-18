@@ -17,7 +17,7 @@ In Jupyter Edit mode:
 * `CTLR-/` to toggle comment
 
 Styling:
-* Relative line number
+* Relative line number (press `l` in Jupyter Command mode to toggle)
 * Ruler at 80 characters
 * Highlight trailing white space
 * Simple tweaks to css for headers and inline- and block-code
