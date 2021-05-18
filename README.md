@@ -3,7 +3,7 @@
 ![screenshot](screenshot.png)
 
 In Jupyter Command mode:
-* default shortcuts e.g. `j`/`k` to move down/up
+* default shortcuts e.g. `j`/`k` to move down/up, `a`/`b` to insert cell above/below
 * `e,e` to clear current cell's output
 * `t` and `T` to toggle header and toolbar
 
