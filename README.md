@@ -48,7 +48,7 @@ docker run --rm -it  \
     -v ${PWD}/jupyter-notebook-extension:/home/jovyan/.jupyter  \
     jupyter/datascience-notebook  \
     start-notebook.sh  \
-    --NotebookApp.password='${SHA1}' . \
+    --NotebookApp.password='${SHA1}' \
     --ip=0.0.0.0
 ```
 For `${SHA1}` see: https://jupyter-notebook.readthedocs.io/en/stable/public_server.html
