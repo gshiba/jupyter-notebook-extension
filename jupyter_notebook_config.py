@@ -1,3 +1,67 @@
+#------------------------------------------------------------------------------
+# My mods
+#------------------------------------------------------------------------------
+
+import io
+import os
+from pathlib import Path
+import nbformat
+from notebook.utils import to_api_path
+from nbconvert.exporters.html import HTMLExporter
+
+
+# Based off of:
+# * http://protips.maxmasnick.com/ipython-notebooks-automatically-export-py-and-html
+# * https://github.com/jupyter/notebook/blob/master/docs/source/extending/savehooks.rst
+_html_exporter = None
+
+def script_post_save(model, os_path, contents_manager, **kwargs):
+    """When saving an .ipynb file, also save .py and .html files"""
+
+    if model['type'] != 'notebook':
+        return
+    path = Path(os_path)
+    with path.open() as f:
+        nb = nbformat.read(f, as_version=4)
+
+    log = contents_manager.log
+
+    sources = []
+    PREFIX = '# '
+    for cell in nb.cells:
+        if not cell.source:
+            continue
+        s = cell.source
+        if cell.cell_type != 'code':
+            s = '\n'.join([(PREFIX + line).strip() for line in s.split('\n')])
+        sources.append(s)
+
+    with path.with_suffix('.py').open('w') as f:
+        log.info("Saving py at %s", f.name)
+        for s in sources:
+            f.write(s)
+            f.write('\n\n')
+
+    from nbconvert.exporters.html import HTMLExporter
+
+    global _html_exporter
+    if _html_exporter is None:
+        _html_exporter = HTMLExporter(parent=contents_manager)
+
+    # save html
+    base, ext = os.path.splitext(os_path)
+    script, resources = _html_exporter.from_filename(os_path)
+    script_fname = base + resources.get('output_extension', '.txt')
+    log.info("Saving html at %s", to_api_path(script_fname, contents_manager.root_dir))
+    with io.open(script_fname, 'w', encoding='utf-8') as f:
+        f.write(script)
+
+    return
+
+
+c.FileContentsManager.post_save_hook = script_post_save
+
+
 # Configuration file for jupyter-notebook.
 
 #------------------------------------------------------------------------------
