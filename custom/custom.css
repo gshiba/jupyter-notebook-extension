@@ -44,11 +44,32 @@
 
 .edit_mode .cell.selected .CodeMirror-focused.cm-fat-cursor {
     /* normal mode */
-    background-color: #F5F6EB;
+    background-color: #EEE;
 }
 
 .edit_mode .cell.selected .CodeMirror-focused:not(.cm-fat-cursor) {
     /* insert mode */
-    background-color: #F2FCFF;
+    background-color: #EEE;
 }
 
+/* Change outer background and make the notebook take all available width */
+.container {
+    width: 95% !important;
+    background: #BBB !important;
+}
+
+/* Change inner background (CODE) */
+div.input_area {
+    background: #DDD !important;
+    font-size: 16px !important;
+}
+
+.edit_mode div.cell.selected:before {
+    /* Color of the selected bar on the left */
+    background: #ff4802;
+}
+
+div.cell {
+    /* Turn off border that indicates selected cell*/
+    border: none;
+}
