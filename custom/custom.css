@@ -52,3 +52,16 @@
     background-color: #F2FCFF;
 }
 
+.container {
+    width: 98% !important;
+}
+
+.edit_mode div.cell.selected:before {
+    /* Color of the selected bar on the left */
+    background: #ff4802;
+}
+
+div.cell {
+    /* Turn off border that indicates selected cell*/
+    border: none;
+}
