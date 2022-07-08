@@ -62,6 +62,19 @@ define([
 
     CodeMirror.Vim.map("jk", "<Esc>", "insert");
 
+    var extraKeys = {
+        // Need to be able to escape from "vim mode" to "jupyter mode"
+        'Esc': leave_current_mode,
+
+        // Convenience: similar to switching panes in tmux.
+        'Ctrl-K': select_cell_above,
+        'Ctrl-J': select_cell_below,
+
+        // Restore other jupyter-default options that disappear because we turned on vim
+        // See more at: https://github.com/jupyter/notebook/blob/2cfff07a39fa486a3f05c26b400fa26e1802a053/notebook/static/edit/js/editor.js#L91
+        'Ctrl-/': 'toggleComment'
+    }
+
     // Update options for *existing* cells
     function update_cm_instance_to_defaults(cell) {
         var cm = cell.code_mirror;
@@ -69,19 +82,7 @@ define([
         cm.setOption("keyMap", "vim");
         cm.setOption("rulers", [ruler]);
         cm.setOption('showTrailingSpace', true);
-        cm.setOption("extraKeys",
-            {
-                // Need to be able to escape from "vim mode" to "jupyter mode"
-                'Esc': leave_current_mode,
-
-                // Convenience: similar to switching panes in tmux.
-                'Ctrl-K': select_cell_above,
-                'Ctrl-J': select_cell_below,
-
-                // Restore other jupyter-default options that disappear because we turned on vim
-                // See more at: https://github.com/jupyter/notebook/blob/2cfff07a39fa486a3f05c26b400fa26e1802a053/notebook/static/edit/js/editor.js#L91
-                'Ctrl-/': 'toggleComment'
-            });
+        cm.setOption("extraKeys", extraKeys);
         cm.on('cursorActivity', showRelativeLines);
         };
     Jupyter.notebook.get_cells().map(update_cm_instance_to_defaults);
@@ -92,6 +93,7 @@ define([
     cm_default.vimMode = true;
     cm_default.rulers = [ruler];
     cm_default.showTrailingSpace = true;
+    cm_default.extraKeys = extraKeys;
     Jupyter.notebook.events.on('create.Cell', function(evt, data) {
         // Jupyter frontend hooks can be found by searching the [notebook
         // repo](github.com/jupyter/notebook) for "events.trigger".
