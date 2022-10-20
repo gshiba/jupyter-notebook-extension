@@ -59,7 +59,7 @@ def script_post_save(model, os_path, contents_manager, **kwargs):
     return
 
 
-c.FileContentsManager.post_save_hook = script_post_save
+# c.FileContentsManager.post_save_hook = script_post_save
 
 
 # Configuration file for jupyter-notebook.
@@ -243,7 +243,7 @@ c.FileContentsManager.post_save_hook = script_post_save
 
 ## The notebook manager class to use.
 #  Default: 'notebook.services.contents.largefilemanager.LargeFileManager'
-# c.NotebookApp.contents_manager_class = 'notebook.services.contents.largefilemanager.LargeFileManager'
+c.NotebookApp.contents_manager_class = 'jupytext.TextFileContentsManager'
 
 ## Extra keyword arguments to pass to `set_secure_cookie`. See tornado's
 #  set_secure_cookie docs for details.

@@ -33,6 +33,8 @@ The default location for custom settings are at `~/.jupyter` (To see where it is
 cd ~
 mv .jupyter .jupyterbackup
 git clone https://github.com/gshiba/jupyter-notebook-extension.git .jupyter
+mkdir -p .config/jupytext
+ln -f -r -s .jupyter/jupytext.toml .config/jupytext/jupytext.toml
 cd /path/to/my/notebooks-dir
 jupyter notebook
 ```
