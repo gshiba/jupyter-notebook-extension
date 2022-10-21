@@ -1004,7 +1004,7 @@ c.NotebookApp.contents_manager_class = 'jupytext.TextFileContentsManager'
 
 ## Glob patterns to hide in file and directory listings.
 #  Default: ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
-# c.ContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~']
+c.ContentsManager.hide_globs = ['__pycache__', '*.pyc', '*.pyo', '.DS_Store', '*.so', '*.dylib', '*~', '*.jt.py']
 
 ## Python callable or importstring thereof
 #  
