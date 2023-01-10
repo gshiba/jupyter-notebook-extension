@@ -70,7 +70,6 @@ div.cell.selected:before {
     /* Color of the bar on the left side of selected cell in edit mode */
     background: rgb(114, 216, 89);
 }
-}
 
 div.output.output_scroll {
     /* Style of output area border when collapsed */
